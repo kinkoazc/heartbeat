@@ -1,0 +1,65 @@
+https://expo.canny.io/feature-requests/p/bluetooth-api
+https://stackoverflow.com/questions/45478002/are-there-any-bluetooth-low-energy-ble-libraries-for-react-native
+    https://github.com/innoveit/react-native-ble-manager
+    https://github.com/watadarkstar/react-native-ble-manager-expo
+https://blog.expo.io/so-you-want-to-build-a-bluetooth-app-with-react-native-and-expo-6ea6a31a151d
+    https://github.com/Polidea/react-native-ble-plx
+    https://github.com/watadarkstar/react-native-ble-expo-app
+https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API
+
+
+https://github.com/expo/expo-sdk
+http://akhromieiev.com/tutorials/the-10-popular-expo-sdk-snacks/
+https://github.com/TalkingQuickly/ekg-arduino-chrome
+https://www.talkingquickly.co.uk/2015/01/diy-ekg-with-arduino-javascript/
+    https://github.com/TalkingQuickly/ekg-arduino-chrome
+    https://github.com/TalkingQuickly/ekg-arduino-chrome-sketches
+    https://www.olimex.com/Products/Duino/Shields/SHIELD-EKG-EMG/
+    https://www.olimex.com/Products/Duino/Shields/SHIELD-EKG-EMG-PA/open-source-hardware
+https://www.google.ro/search?q=ECG+reader2+free&oq=ECG+reader2+free&aqs=chrome..69i57.5340j0j7&sourceid=chrome&ie=UTF-8
+https://apkpure.com/ecg-reader2-free/b4a.ecgread
+https://play.google.com/store/apps/details?id=b4a.ecgread&hl=en
+http://www.bendigohealth.org.au/Content/Docs/ECG%20learning%20package.pdf
+https://accessmedicine.mhmedical.com/content.aspx?sectionid=43074928&bookid=365
+https://www.practicalclinicalskills.com/reading-ecg
+https://www.practicalclinicalskills.com/reading-ekg
+https://learn.canvas.net/courses/883/pages/cardiac-monitoring-ecg-circulation-advanced
+https://github.com/rdtek/ECGViewer
+https://stackoverflow.com/questions/5902748/ecg-curve-in-javascript-using-some-chart-library
+
+DB
+    https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0176222
+
+CHARTING
+    https://github.com/wuxudong/react-native-charts-wrapper
+    https://github.com/FormidableLabs/victory-native
+        https://github.com/expo/examples/tree/master/with-victory-native
+    https://github.com/react-native-community/react-native-svg
+    https://github.com/capitalone/react-native-pathjs-charts
+    https://medium.com/react-native-motion/animated-graph-in-react-native-51354af2bdb0
+    >>https://github.com/JesperLekland/react-native-svg-charts
+        https://github.com/JesperLekland/react-native-svg-charts-examples
+
+BLUETOOTH
+    https://stackoverflow.com/questions/45478002/are-there-any-bluetooth-low-energy-ble-libraries-for-react-native
+    >https://github.com/innoveit/react-native-ble-manager
+		https://github.com/watadarkstar/react-native-ble-manager-expo
+    >https://github.com/Polidea/react-native-ble-plx
+        https://blog.expo.io/so-you-want-to-build-a-bluetooth-app-with-react-native-and-expo-6ea6a31a151d
+        https://github.com/watadarkstar/react-native-ble-expo-app
+
+    https://expo.canny.io/feature-requests/p/bluetooth-api
+    https://forums.expo.io/t/bluetooth-api-support/754
+    https://forums.expo.io/t/any-plain-for-support-bluetooth-api-like-phonegap-do/1035
+    https://github.com/expo/expo-sdk
+    http://akhromieiev.com/tutorials/the-10-popular-expo-sdk-snacks/
+    https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API
+    https://agostini.tech/2017/02/20/creating-a-temperature-sensor-for-ios-using-ble-and-arduino/
+    http://nilhcem.com/android-things/bluetooth-low-energy
+    https://medium.com/@avigezerit/bluetooth-low-energy-on-android-22bc7310387a
+    https://github.com/watadarkstar/react-native-ble-manager-expo
+
+    >>https://github.com/rusel1989/react-native-bluetooth-serial
+    https://github.com/derektu/react-native-android-btserial
+
+https://www.npmjs.com/package/react-native-range-slider
