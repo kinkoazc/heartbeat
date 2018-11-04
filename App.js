@@ -202,6 +202,7 @@ class App extends Component {
     }
 
     componentDidMount() {
+        console.log('mounted');
         setInterval(() => {
             this.setState(() => this.state);
         }, 1000);
@@ -255,14 +256,16 @@ class App extends Component {
      */
     discoverUnpaired() {
         if (this.state.discovering) {
-            return false
+            return false;
         } else {
-            this.setState({discovering: true});
-            BluetoothSerial.discoverUnpairedDevices()
-                .then((unpairedDevices) => {
-                    this.setState({unpairedDevices, discovering: false})
-                })
-                .catch((err) => ToastAndroid.show(err.message, ToastAndroid.SHORT))
+            this.setState({discovering: true}, () => {
+                BluetoothSerial.discoverUnpairedDevices()
+                    .then((unpairedDevices) => {
+                        const devices = this.state.devices.filter(d => !unpairedDevices.find(up => up.id === d.id));
+                        this.setState({unpairedDevices, devices, discovering: false});
+                    })
+                    .catch((err) => ToastAndroid.show(err.message, ToastAndroid.SHORT));
+            });
         }
     }
 
@@ -274,9 +277,9 @@ class App extends Component {
         if (this.state.discovering) {
             BluetoothSerial.cancelDiscovery()
                 .then(() => {
-                    this.setState({discovering: false})
+                    this.setState({discovering: false});
                 })
-                .catch((err) => ToastAndroid.show(err.message, ToastAndroid.SHORT))
+                .catch((err) => ToastAndroid.show(err.message, ToastAndroid.SHORT));
         }
     }
 
@@ -289,17 +292,18 @@ class App extends Component {
             .then((paired) => {
                 if (paired) {
                     ToastAndroid.show(`Device ${device.name} paired successfully`, ToastAndroid.SHORT);
-                    const devices = this.state.devices;
-                    devices.push(device);
                     this.setState({
                         devices,
                         unpairedDevices: this.state.unpairedDevices.filter((d) => d.id !== device.id)
+                    }, () => {
+                        const devices = this.state.devices;
+                        devices.push(device);
                     });
                 } else {
                     ToastAndroid.show(`Device ${device.name} pairing failed`, ToastAndroid.SHORT);
                 }
             })
-            .catch((err) => ToastAndroid.show(err.message, ToastAndroid.SHORT))
+            .catch((err) => ToastAndroid.show(err.message, ToastAndroid.SHORT));
     }
 
     /**
@@ -311,9 +315,13 @@ class App extends Component {
         BluetoothSerial.connect(device.id)
             .then((res) => {
                 ToastAndroid.show(`Connected to device ${device.name}`, ToastAndroid.SHORT);
-                this.setState({device, connected: true, connecting: false});
+                this.setState({device, connected: true, connecting: false}, () => {
+                    this.write('Demo message');
+                });
             })
-            .catch((err) => ToastAndroid.show(err.message, ToastAndroid.SHORT))
+            .catch((err) => {
+                ToastAndroid.show(err.message, ToastAndroid.SHORT);
+            });
     }
 
     /**
@@ -322,7 +330,7 @@ class App extends Component {
     disconnect() {
         BluetoothSerial.disconnect()
             .then(() => this.setState({connected: false}))
-            .catch((err) => ToastAndroid.show(err.message, ToastAndroid.SHORT))
+            .catch((err) => ToastAndroid.show(err.message, ToastAndroid.SHORT));
     }
 
     /**
@@ -331,9 +339,9 @@ class App extends Component {
      */
     toggleConnect(value) {
         if (value === true && this.state.device) {
-            this.connect(this.state.device)
+            this.connect(this.state.device);
         } else {
-            this.disconnect()
+            this.disconnect();
         }
     }
 
@@ -346,19 +354,19 @@ class App extends Component {
             ToastAndroid.show('You must connect to device first', ToastAndroid.SHORT)
         }
 
-        BluetoothSerial.write(message)
+        return BluetoothSerial.write(message)
             .then((res) => {
-                ToastAndroid.show('Successfuly wrote to device', ToastAndroid.SHORT);
-                this.setState({connected: true})
+                ToastAndroid.show('Successfully wrote to device', ToastAndroid.SHORT);
+                this.setState({connected: true});
             })
-            .catch((err) => ToastAndroid.show(err.message, ToastAndroid.SHORT))
+            .catch((err) => ToastAndroid.show(err.message, ToastAndroid.SHORT));
     }
 
     onDevicePress(device) {
         if (this.state.section === 0) {
-            this.connect(device)
+            this.connect(device);
         } else if (this.state.section === 1) {
-            this.pairDevice(device)
+            this.pairDevice(device);
         }
     }
 
@@ -371,11 +379,12 @@ class App extends Component {
             const packet = new Buffer(packetSize);
             packet.fill(' ');
             toWrite.copy(packet, 0, i * packetSize, (i + 1) * packetSize);
-            writePromises.push(BluetoothSerial.write(packet))
+            writePromises.push(BluetoothSerial.write(packet));
         }
 
         Promise.all(writePromises)
             .then((result) => {
+                ToastAndroid.show(`Packets successfully written to ${device.name}`, ToastAndroid.SHORT);
             });
     }
 
@@ -560,7 +569,7 @@ class App extends Component {
                                     )
                             )))}
 
-                <View style={{alignSelf: 'flex-end', height: 52}}>
+                <View style={{alignSelf: 'flex-end', height: Platform.OS === 'android' && (this.state.section === 1 || !this.state.isEnabled) ? 52 : 0}}>
                     <ScrollView
                         horizontal
                         contentContainerStyle={styles.fixedFooter}>

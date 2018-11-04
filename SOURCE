@@ -26,6 +26,7 @@ https://www.practicalclinicalskills.com/reading-ekg
 https://learn.canvas.net/courses/883/pages/cardiac-monitoring-ecg-circulation-advanced
 https://github.com/rdtek/ECGViewer
 https://stackoverflow.com/questions/5902748/ecg-curve-in-javascript-using-some-chart-library
+https://www.npmjs.com/package/react-native-range-slider
 
 DB
     https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0176222
@@ -62,4 +63,5 @@ BLUETOOTH
     >>https://github.com/rusel1989/react-native-bluetooth-serial
     https://github.com/derektu/react-native-android-btserial
 
-https://www.npmjs.com/package/react-native-range-slider
+USB
+    https://github.com/mapaiva/react-native-usbserial
