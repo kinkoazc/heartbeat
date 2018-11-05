@@ -509,17 +509,19 @@ class App extends Component {
                                             <ScrollView>{/*  style={{height: '65%'}} */}
                                                 {
                                                     this.state.formCheckboxQuestions.map((questionObj, idx1) => (
-                                                        <View style={{flex: 1, padding: 16}}>
+                                                        <View style={{flex: 1, padding: 16}} key={idx1.toString()}>
                                                             <Text
-                                                                style={{fontWeight: 'bold'}}>{questionObj.question}</Text><Text
+                                                                style={{fontWeight: 'bold'}} key={(idx1 + ' ' + idx1).toString()}>{questionObj.question}</Text><Text
                                                             style={{fontStyle: 'italic'}}>{' ' + questionObj.questionExplanation}</Text>
                                                             {
                                                                 questionObj.answers.map((answerObj, idx2) => (
-                                                                    <View style={{flexDirection: 'row'}}>
+                                                                    <View style={{flexDirection: 'row'}} key={(idx1 + ' ' + idx1 + ' ' + idx2).toString()}>
                                                                         <CheckBox
+                                                                            key={(idx1 + ' ' + idx1 + ' ' + idx2 + ' ' + idx2).toString()}
                                                                             value={this.state['checked-' + idx1] === idx2}
                                                                             onValueChange={() => this.setState({['checked-' + idx1]: idx2})}/>
-                                                                        <Text style={{marginTop: 5}}
+                                                                        <Text key={(idx1 + ' ' + idx1 + ' ' + idx2 + ' ' + idx2 + ' ' + idx2).toString()}
+                                                                              style={{marginTop: 5}}
                                                                               onPress={() => this.setState({['checked-' + idx1]: idx2})}>{answerObj.answer}</Text>
                                                                     </View>
                                                                 ))
